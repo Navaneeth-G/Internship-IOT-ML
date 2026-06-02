@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navaneeth G | Data Science Portfolio</title>
+    <meta name="description" content="Navaneeth G — Data Science student. Mini project on MCI detection at RAET'26. Internships at Neovent Innovations and IEEE IoT.">
+    <meta name="author" content="Navaneeth G">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #050510;
+            color: #e8e8f0;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        .bg-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: radial-gradient(ellipse at 20% 30%, #0a0a2e, #030310);
+        }
+
+        .bg-gradient::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.03"><path fill="none" d="M10,10 L90,10 M10,20 L90,20 M10,30 L90,30 M10,40 L90,40 M10,50 L90,50 M10,60 L90,60 M10,70 L90,70 M10,80 L90,80 M10,90 L90,90" stroke="white" stroke-width="0.5"/><path fill="none" d="M10,10 L10,90 M20,10 L20,90 M30,10 L30,90 M40,10 L40,90 M50,10 L50,90 M60,10 L60,90 M70,10 L70,90 M80,10 L80,90 M90,10 L90,90" stroke="white" stroke-width="0.5"/></svg>');
+            background-repeat: repeat;
+            opacity: 0.3;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(5, 5, 16, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(0, 212, 255, 0.15);
+            z-index: 1000;
+            padding: 18px 0;
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #ffffff 0%, #00d4ff 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: #c0c0e0;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #00d4ff;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: #00d4ff;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 140px 0 80px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 500;
+            color: #00d4ff;
+            margin-bottom: 24px;
+            letter-spacing: 1px;
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -2px;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, #ffffff, #00d4ff, #0077b3);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero-desc {
+            font-size: 18px;
+            color: #a0a0c0;
+            margin-bottom: 32px;
+            max-width: 500px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            color: #050510;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid rgba(0, 212, 255, 0.5);
+            color: #00d4ff;
+        }
+
+        .btn-outline:hover {
+            background: rgba(0, 212, 255, 0.1);
+            transform: translateY(-3px);
+            border-color: #00d4ff;
+        }
+
+        .hero-right {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 32px;
+            padding: 40px;
+            border: 1px solid rgba(0, 212, 255, 0.15);
+            backdrop-filter: blur(10px);
+        }
+
+        .code-block {
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            color: #88d4ff;
+            line-height: 1.6;
+        }
+
+        section {
+            padding: 100px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-tag {
+            display: inline-block;
+            background: rgba(0, 212, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 11px;
+            font-weight: 600;
+            color: #00d4ff;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: 40px;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .experience-card {
+            background: linear-gradient(135deg, rgba(15, 15, 36, 0.8), rgba(8, 8, 24, 0.8));
+            border-radius: 28px;
+            padding: 32px;
+            margin-bottom: 24px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
+
+        .experience-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #00d4ff;
+        }
+
+        .experience-date {
+            font-size: 13px;
+            color: #888;
+        }
+
+        .experience-company {
+            font-size: 14px;
+            color: #aaa;
+            margin-bottom: 16px;
+        }
+
+        .research-card {
+            background: linear-gradient(135deg, rgba(15, 15, 36, 0.8), rgba(8, 8, 24, 0.8));
+            border-radius: 28px;
+            padding: 40px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .research-badge {
+            display: inline-block;
+            background: rgba(0, 212, 255, 0.15);
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #00d4ff;
+            margin-bottom: 20px;
+        }
+
+        .research-card h3 {
+            font-size: 28px;
+            margin-bottom: 16px;
+        }
+
+        .research-meta {
+            color: #00d4ff;
+            font-size: 14px;
+            margin-bottom: 24px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 28px;
+        }
+
+        .project-card {
+            background: rgba(15, 15, 36, 0.6);
+            border-radius: 24px;
+            padding: 32px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s;
+            backdrop-filter: blur(5px);
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(0, 212, 255, 0.4);
+            background: rgba(15, 15, 36, 0.8);
+        }
+
+        .project-icon {
+            font-size: 42px;
+            margin-bottom: 24px;
+        }
+
+        .project-card h3 {
+            font-size: 22px;
+            margin-bottom: 12px;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 16px 0;
+        }
+
+        .project-tech span {
+            background: rgba(0, 212, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 11px;
+            color: #00d4ff;
+        }
+
+        .project-card p {
+            color: #aaa;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+
+        .skill-item {
+            background: rgba(0, 212, 255, 0.08);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .skill-item:hover {
+            background: rgba(0, 212, 255, 0.2);
+            transform: translateY(-2px);
+            border-color: #00d4ff;
+        }
+
+        .upskilling-banner {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), rgba(0, 119, 179, 0.05));
+            border-radius: 20px;
+            padding: 24px;
+            text-align: center;
+            border: 1px dashed rgba(0, 212, 255, 0.3);
+        }
+
+        .contact-grid {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .contact-card {
+            background: rgba(15, 15, 36, 0.6);
+            border-radius: 20px;
+            padding: 20px 32px;
+            text-decoration: none;
+            color: #e0e0e0;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .contact-card:hover {
+            background: #00d4ff;
+            color: #050510;
+            transform: translateY(-3px);
+            border-color: #00d4ff;
+        }
+
+        footer {
+            padding: 48px 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        @media (max-width: 900px) {
+            .hero-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 44px; }
+            .section-title { font-size: 32px; }
+            .container { padding: 0 20px; }
+            section { padding: 60px 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-gradient"></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Navaneeth G</div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#experience">Experience</a>
+                <a href="#projects">Projects</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact">Connect</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <!-- Hero -->
+            <div class="hero">
+                <div class="hero-grid">
+                    <div>
+                        <div class="hero-badge">✦ B.Tech CS (Data Science) @ STM Kannur</div>
+                        <h1>Navaneeth <span class="hero-gradient">G</span></h1>
+                        <div class="hero-desc">Data Science student. Two internships. One mini project at RAET'26.</div>
+                        <div class="btn-group">
+                            <a href="#experience" class="btn btn-primary">View Experience →</a>
+                            <a href="https://github.com/Navaneeth-G" target="_blank" class="btn btn-outline">GitHub</a>
+                        </div>
+                    </div>
+                    <div class="hero-right">
+                        <div class="code-block">
+                            <span style="color:#88d4ff">┌─────────────────────────────────┐</span><br>
+                            <span style="color:#88d4ff">│</span>  <span style="color:#fff">"Building with Data.</span>           <span style="color:#88d4ff">│</span><br>
+                            <span style="color:#88d4ff">│</span>   <span style="color:#fff">Backed by Research."</span>          <span style="color:#88d4ff">│</span><br>
+                            <span style="color:#88d4ff">├─────────────────────────────────┤</span><br>
+                            <span style="color:#88d4ff">│</span>  Python • SQL • TensorFlow       <span style="color:#88d4ff">│</span><br>
+                            <span style="color:#88d4ff">│</span>  Streamlit • Power BI • R       <span style="color:#88d4ff">│</span><br>
+                            <span style="color:#88d4ff">│</span>  Git • GitHub • Firebase        <span style="color:#88d4ff">│</span><br>
+                            <span style="color:#88d4ff">└─────────────────────────────────┘</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- About -->
+            <section id="about">
+                <div class="section-header">
+                    <div class="section-tag">✦ Who I Am</div>
+                    <h2 class="section-title">Just Getting Started</h2>
+                </div>
+                <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                    <p style="font-size: 18px; margin-bottom: 24px;">I'm a 3rd-year Data Science student at St. Thomas College of Engineering & Technology, Kannur.</p>
+                    <p style="font-size: 16px; color: #aaa;">I've done two internships — one at Neovent Innovations (Python for Data Science) and another ongoing at IEEE SB GCEK (Edge IoT & Smart Automation).</p>
+                    <p style="font-size: 16px; color: #aaa; margin-top: 16px;">Also presented a mini project on MCI detection at RAET'26 — a small step I'm proud of.</p>
+                    <p style="font-size: 16px; color: #888; margin-top: 24px;">Still figuring out where exactly in Data Science I want to go — but I show up every day and keep building.</p>
+                </div>
+            </section>
+
+            <!-- Experience -->
+            <section id="experience">
+                <div class="section-header">
+                    <div class="section-tag">✦ Internships</div>
+                    <h2 class="section-title">Where I've Worked</h2>
+                </div>
+
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div class="experience-title">Python for Data Science Intern</div>
+                        <div class="experience-date">June 2025</div>
+                    </div>
+                    <div class="experience-company">Neovent Innovations (MSME + ISO 9001:2015 certified)</div>
+                    <p style="color: #aaa; font-size: 14px;">3-week internship training program. Worked on Python fundamentals, data analysis tasks, and small projects. My first real exposure to how data science works outside of tutorials. Got me interested in actually building things.</p>
+                </div>
+
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div class="experience-title">Edge IoT & Smart Automation Intern</div>
+                        <div class="experience-date">June 2026 (ongoing)</div>
+                    </div>
+                    <div class="experience-company">IEEE SB GCEK + Usizo Solutions</div>
+                    <p style="color: #aaa; font-size: 14px;">14-day hybrid internship covering Git/GitHub, Firebase hosting, TinyML, Edge Impulse, and cloud dashboards. Currently learning documentation workflows and deploying portfolio sites.</p>
+                </div>
+            </section>
+
+            <!-- Mini Project (RAET'26) -->
+            <section id="research">
+                <div class="section-header">
+                    <div class="section-tag">✦ Mini Project</div>
+                    <h2 class="section-title">MCI Detection — RAET'26</h2>
+                </div>
+                <div class="research-card">
+                    <div class="research-badge">📄 RAET'26 | March 2026</div>
+                    <h3>Early Detection of MCI using Stacked CNN Feature Fusion</h3>
+                    <div class="research-meta">ResNet50 + DenseNet121 | Streamlit Deployment</div>
+                    <p style="margin-bottom: 16px;">A small dual-backbone deep learning model combining ResNet50 (global brain structure) and DenseNet121 (fine-grained texture). Features fused with simple concatenation.</p>
+                    <p style="margin-bottom: 24px;">Built a Streamlit app to validate MRI inputs and run inference. Not production-ready — just a learning experience that made it to a national conference.</p>
+                    <a href="https://github.com/Navaneeth-G/Early-Detection-of-MCI" class="btn btn-outline" style="display: inline-flex;">View on GitHub →</a>
+                </div>
+            </section>
+
+            <!-- Projects -->
+            <section id="projects">
+                <div class="section-header">
+                    <div class="section-tag">✦ Portfolio</div>
+                    <h2 class="section-title">Things I've Built</h2>
+                </div>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-icon">🧠</div>
+                        <h3>MCI Detection App</h3>
+                        <div class="project-tech">
+                            <span>TensorFlow</span>
+                            <span>Streamlit</span>
+                            <span>CNN</span>
+                        </div>
+                        <p>Medical AI web app using ResNet50 + DenseNet121 feature fusion. MRI validation and prediction interface.</p>
+                        <a href="https://github.com/Navaneeth-G/Early-Detection-of-MCI" class="btn-outline" style="padding: 8px 0; border: none;">GitHub →</a>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-icon">📘</div>
+                        <h3>IoT Internship Docs</h3>
+                        <div class="project-tech">
+                            <span>Git/GitHub</span>
+                            <span>Firebase</span>
+                            <span>IoT</span>
+                        </div>
+                        <p>14-day internship documentation — daily logs, Git workflows, and Firebase deployment.</p>
+                        <a href="https://github.com/Navaneeth-G/Internship-IOT-ML" class="btn-outline" style="padding: 8px 0; border: none;">GitHub →</a>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-icon">🌐</div>
+                        <h3>This Portfolio</h3>
+                        <div class="project-tech">
+                            <span>HTML/CSS</span>
+                            <span>Firebase</span>
+                            <span>Responsive</span>
+                        </div>
+                        <p>Personal portfolio — glass morphism design, deployed on Firebase Hosting.</p>
+                        <a href="#" class="btn-outline" style="padding: 8px 0; border: none;">Live →</a>
+                    </div>
+                </div>
+                <p style="margin-top: 48px; color: #666; text-align: center; font-size: 14px;">🚀 More projects in progress — building one thing at a time.</p>
+            </section>
+
+            <!-- Skills -->
+            <section id="skills">
+                <div class="section-header">
+                    <div class="section-tag">✦ Toolbox</div>
+                    <h2 class="section-title">Skills & Technologies</h2>
+                </div>
+                <div class="skills-grid">
+                    <span class="skill-item">Python</span>
+                    <span class="skill-item">SQL</span>
+                    <span class="skill-item">TensorFlow</span>
+                    <span class="skill-item">Streamlit</span>
+                    <span class="skill-item">Power BI</span>
+                    <span class="skill-item">R</span>
+                    <span class="skill-item">Git/GitHub</span>
+                    <span class="skill-item">Deep Learning</span>
+                    <span class="skill-item">Firebase</span>
+                    <span class="skill-item">HTML/CSS</span>
+                </div>
+                <div class="upskilling-banner">
+                    <p style="font-size: 14px;">📚 Currently upskilling: <strong>Pandas, NumPy, Matplotlib, Seaborn, Data Cleaning, Statistics</strong></p>
+                </div>
+            </section>
+
+            <!-- Contact -->
+            <section id="contact">
+                <div class="section-header">
+                    <div class="section-tag">✦ Get in Touch</div>
+                    <h2 class="section-title">Connect With Me</h2>
+                </div>
+                <div class="contact-grid">
+                    <a href="https://github.com/Navaneeth-G" target="_blank" class="contact-card">
+                        <span style="font-size: 24px;">🐙</span> GitHub
+                    </a>
+                    <a href="https://linkedin.com/in/navaneeth-g-b1a735278" target="_blank" class="contact-card">
+                        <span style="font-size: 24px;">🔗</span> LinkedIn
+                    </a>
+                    <a href="mailto:navaneethgnambiar@gmail.com" class="contact-card">
+                        <span style="font-size: 24px;">✉️</span> Email
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 Navaneeth G | Building with Data. Backed by Research.</p>
+        </div>
+    </footer>
+</body>
+</html>
