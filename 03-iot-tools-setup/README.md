@@ -6,10 +6,6 @@
 
  
 
-**Session Mode:** Online 
-
- 
-
 ## Task Description 
 
 Install and verify essential tools for IoT hardware simulation and embedded development - KiCad (PCB design) and PlatformIO (VS Code extension for embedded programming). 
