@@ -2,8 +2,6 @@
 
 **Date:** 01/06/2026
 
-**Session Mode:** Online
-
 ## Task Description
 Set up Git version control, configure user identity, create a GitHub repository, and push the first set of documentation files. This establishes the foundation for tracking all internship work.
 
