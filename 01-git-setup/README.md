@@ -19,7 +19,7 @@ Set up Git version control, configure user identity, create a GitHub repository,
 - Learned to write meaningful commit messages with prefixes (`doc:`, `feat:`)
 - Handled line‑ending warnings (LF vs CRLF) on Windows – normal behaviour
 - Verified successful upload by checking the repository on GitHub.com
-- Mastered basic Git commands: `git clone`, `git add`, `git commit`, `git push`
+- Practised basic Git commands: `git clone`, `git add`, `git commit`, `git push`
 
 ## Next Steps
 - Set up SSH key for smoother authentication (optional)
